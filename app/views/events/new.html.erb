@@ -1,0 +1,20 @@
+<%= form_for :events, url: events_path do |f| %>
+    <p>
+      Названия<br>
+      <%= f.text_field :event_name %>
+    </p>
+    <p>
+      Дата и время события<br>
+      <%= f.datetime_select :event_data %>
+    </p>
+    <p>
+      Повторять событие:<br>
+      <%= f.select(:period, [['Не повторять', 0], ['Каждый день', 1], ['Каждый месяц', 2], ['Каждый год', 3]]) %>
+    </p>
+    <input id="events_false" name="events[user]" value="<%= current_user.id %>" type="hidden">
+
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

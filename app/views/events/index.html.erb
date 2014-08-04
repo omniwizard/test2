@@ -1,0 +1,34 @@
+
+<h1>Все события</h1>
+<%= link_to 'Новое событие', new_event_path %>
+
+<select id="event_type">
+  <option value=false>Только мои</option>
+  <option value=true>Посмотреть все события</option>
+</select>
+
+<div id='calendar'></div>
+
+<script language="JavaScript">
+    $(document).ready(function() {
+
+        // page is now ready, initialize the calendar...
+
+        $('#calendar').fullCalendar({
+            events: {
+                url: '/events/list',
+                data: function(){
+                    return {'all_events': $('#event_type').val()};
+                }
+            },
+            eventClick: function(calEvent, jsEvent, view) {
+                window.location.href = '/events/' + calEvent.id + '/edit'
+            }
+        });
+
+        $('#event_type').change(function(){
+            $('#calendar').fullCalendar('refetchEvents');
+        });
+
+    });
+</script>

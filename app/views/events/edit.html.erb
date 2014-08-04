@@ -1,0 +1,22 @@
+<h1>Изменить задание</h1>
+
+<%= form_for :events, url: event_path(@events), method: :patch do |f| %>
+    <p>
+      Название события:<br>
+      <%= f.text_field :event_name %>
+    </p>
+    <p>
+      Дата/время:<br>
+      <%= f.datetime_select :event_data %>
+    </p>
+    <p>
+      Повторять событие:<br>
+      <%= f.select(:period, [['Не повторять', 0], ['Каждый день', 1], ['Каждый месяц', 2], ['Каждый год', 3]]) %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+    <%= link_to 'Back', events_path %>
+<% end %>
+

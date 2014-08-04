@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_name: MyString
+  event_data: 2014-08-03 04:00:52
+  user: MyString
+  period: 1
+
+two:
+  event_name: MyString
+  event_data: 2014-08-03 04:00:52
+  user: MyString
+  period: 1

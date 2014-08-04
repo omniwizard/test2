@@ -1,0 +1,14 @@
+<p>
+  <strong>Название:</strong>
+  <%= @events.event_name %>
+</p>
+<p>
+  <strong>Дата:</strong>
+  <%= @events.event_data %>
+</p>
+<p>
+  <strong>Повтор:</strong>
+  <%= @events.period %>
+</p>
+
+<%= link_to 'Back', events_path %>
