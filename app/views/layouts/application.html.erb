@@ -8,16 +8,26 @@
 </head>
 <body>
 
-<p class="navbar-text pull-right">
-  <% if user_signed_in? %>
-      Текущий пользователь: <strong><%= current_user.email %></strong>.
-      <%= link_to 'Изменить профиль', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Выйти", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <% else %>
-      <%= link_to "Зарегистрироваться", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Войти", new_user_session_path, :class => 'navbar-link'  %>
-  <% end %>
-<%= yield %>
+<div class="container">
+<p></p>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="row">
+    <% if user_signed_in? %>
+    <div class="col-md-8"><%= current_user.email %></div>
+    <div class="col-md-4">
+      <p class="navbar-text navbar-right"><span style='margin:1px 2px;'><%= link_to 'Изменить профиль', edit_user_registration_path  %></span>
+       <span style='margin:1px 21px;'><%= link_to "Выйти", destroy_user_session_path, method: :delete  %></span></p>
+    <% else %>
+        <p class="navbar-text navbar-right"><span style='margin:1px 45px;'><%= link_to "Зарегистрироваться", new_user_registration_path ,:class => 'btn btn-success'  %></span>
+         </p>
+    <% end %>
 
+
+    </div>
+  </div>
+</nav>
+
+<%= yield %>
+</div>
 </body>
 </html>

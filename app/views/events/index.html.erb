@@ -1,29 +1,44 @@
+</section>
+<div class="row">
+  <div class="col-md-4">
+    <select id="event_type" class="form-control">
+    <option value=false>Только мои</option>
+    <option value=true>Посмотреть все события</option>
+    </select>
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <%= link_to 'Новое событие', new_event_path, :class => 'btn btn-success', :style => 'float:right' %>
+  </div>
+</div>
+</section>
 
-<h1>Все события</h1>
-<%= link_to 'Новое событие', new_event_path %>
 
-<select id="event_type">
-  <option value=false>Только мои</option>
-  <option value=true>Посмотреть все события</option>
-</select>
-
-<div id='calendar'></div>
+<div id='calendar' style = 'margin-top:20px;'></div>
 
 <script language="JavaScript">
     $(document).ready(function() {
 
+
         // page is now ready, initialize the calendar...
 
         $('#calendar').fullCalendar({
+
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+
+            },
             events: {
                 url: '/events/list',
                 data: function(){
-                    return {'all_events': $('#event_type').val()};
+                    return {'all_events': $('#event_type').val() };
                 }
             },
             eventClick: function(calEvent, jsEvent, view) {
                 window.location.href = '/events/' + calEvent.id + '/edit'
             }
+
         });
 
         $('#event_type').change(function(){
